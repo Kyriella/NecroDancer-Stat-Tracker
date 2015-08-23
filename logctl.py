@@ -22,7 +22,8 @@ import time
 
 import config
 
-logs_path = config.config['general']['directory']
+logs_path = config.config['general']['directory'] + 'logs/'
+print("Using %s as the log directory" % logs_path)
 
 
 def month_to_num(log):

@@ -26,17 +26,18 @@ def necrodancer_dir():
     """Allows the user to choose their Steam or NecroDancer directory.
     ONLY WORKS ON UNIX-BASED SYSTEMS AT THE MOMENT"""
     while True: # Loop until a valid path is specified
-        path = input('Please enter the path to either your Steam or your NecroDancer directory: ')
+        path = input('Please enter the path to either your \'Steam\' or your \'Crypt of the NecroDancer\' directory:\n')
         split_path = path.split('/')    # Split path to detect if directory is Steam or NecroDancer
+        split_path = [x for x in split_path if x.strip()]   # Remove entries of only whitespace
         if split_path[-1] == 'Steam':
             path = '/' + '/'.join(split_path) + '/steamapps/common/Crypt of the NecroDancer/'
             break
-        elif split_path[-1] == 'Necrodancer':
+        elif split_path[-1] == 'Crypt of the NecroDancer':
             path = '/' + '/'.join(split_path) + '/'
             break
         else:
             print('Not a valid path')
-
+    print('Saving %s as the Crypt of the Necrodancer directory' % path)
     config['general'] = {'directory': path}
 
 
